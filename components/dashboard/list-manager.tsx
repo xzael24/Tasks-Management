@@ -20,7 +20,6 @@ const predefinedColors = [
   "#6366F1", // Indigo
   "#A855F7", // Violet
   "#14B8A6", // Teal
-  "#F59E0B", // Amber
   "#6B7280", // Gray
   "#1F2937", // Dark Gray
   "#DC2626", // Dark Red
@@ -72,7 +71,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
       await addList({
         name: newListName.trim(),
         color: newListColor,
-        description: newListDescription.trim() || undefined,
+        description: newListDescription.trim(),
         userId,
       })
 

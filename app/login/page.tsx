@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { auth } from "@/lib/firebase"
 import { useAuth } from "@/lib/auth-context"
 import { useRouter } from "next/navigation"
@@ -32,10 +32,41 @@ export default function LoginPage() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      toast.success("Welcome back!")
+      toast.success("Selamat datang kembali!")
       router.push("/dashboard")
     } catch (error: any) {
-      toast.error(error.message || "Failed to login")
+      let message = "Gagal login. Silakan coba lagi."
+      if (error.code === "auth/user-not-found") {
+        message = "Email tidak ditemukan."
+      } else if (error.code === "auth/wrong-password") {
+        message = "Password salah."
+      } else if (error.code === "auth/invalid-email") {
+        message = "Format email tidak valid."
+      } else if (error.code === "auth/too-many-requests") {
+        message = "Terlalu banyak percobaan. Silakan coba beberapa saat lagi."
+      }
+      toast.error(message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Google login handler
+  const handleGoogleLogin = async () => {
+    setLoading(true)
+    const provider = new GoogleAuthProvider()
+    try {
+      await signInWithPopup(auth, provider)
+      toast.success("Berhasil login dengan Google!")
+      router.push("/dashboard")
+    } catch (error: any) {
+      let message = "Login Google gagal. Silakan coba lagi."
+      if (error.code === "auth/popup-closed-by-user") {
+        message = "Login Google dibatalkan."
+      } else if (error.code === "auth/account-exists-with-different-credential") {
+        message = "Akun sudah terdaftar dengan metode berbeda."
+      }
+      toast.error(message)
     } finally {
       setLoading(false)
     }
@@ -98,6 +129,27 @@ export default function LoginPage() {
               className="w-full py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
             >
               {loading ? "Signing In..." : "Sign In"}
+            </button>
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              disabled={loading}
+              className="w-full py-3 mt-2 bg-white text-gray-800 border border-gray-300 rounded-xl hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold flex items-center justify-center gap-2"
+            >
+              <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clipPath="url(#clip0_17_40)">
+                  <path d="M47.5 24.5C47.5 22.6 47.3 20.8 47 19H24V29.1H37.4C36.7 32.2 34.7 34.7 31.8 36.4V42.1H39.5C44 38.1 47.5 32.1 47.5 24.5Z" fill="#4285F4"/>
+                  <path d="M24 48C30.6 48 36.1 45.9 39.5 42.1L31.8 36.4C29.9 37.6 27.2 38.4 24 38.4C17.7 38.4 12.2 34.3 10.4 28.7H2.4V34.6C5.8 41.1 14.1 48 24 48Z" fill="#34A853"/>
+                  <path d="M10.4 28.7C9.9 27.5 9.6 26.2 9.6 24.8C9.6 23.4 9.9 22.1 10.4 20.9V15H2.4C0.8 18.2 0 21.5 0 24.8C0 28.1 0.8 31.4 2.4 34.6L10.4 28.7Z" fill="#FBBC05"/>
+                  <path d="M24 9.6C27.7 9.6 30.7 10.9 32.8 12.8L39.7 6C36.1 2.7 30.6 0 24 0C14.1 0 5.8 6.9 2.4 15L10.4 20.9C12.2 15.3 17.7 9.6 24 9.6Z" fill="#EA4335"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_17_40">
+                    <rect width="48" height="48" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              {loading ? "Signing in with Google..." : "Sign in with Google"}
             </button>
           </form>
 

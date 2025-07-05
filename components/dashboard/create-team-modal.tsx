@@ -1,11 +1,12 @@
 "use client"
 
 import type React from "react"
-
 import { Fragment, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { X, Users, Palette } from "lucide-react"
 import toast from "react-hot-toast"
+import { useAuth } from "@/lib/auth-context"
+import { createTeam } from "@/lib/team"
 
 interface CreateTeamModalProps {
   isOpen: boolean
@@ -25,65 +26,80 @@ const teamColors = [
   "#6B7280",
 ]
 
-export function CreateTeamModal({ isOpen, onClose }: CreateTeamModalProps) {
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [selectedColor, setSelectedColor] = useState(teamColors[0])
-  const [loading, setLoading] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!name.trim()) return
-
-    setLoading(true)
-
-    // Simulate API call
-    setTimeout(() => {
-      toast.success(`Team "${name}" created successfully`)
-      setName("")
-      setDescription("")
-      setSelectedColor(teamColors[0])
-      setLoading(false)
-      onClose()
-    }, 1000)
-  }
-
-  return (
-    <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={onClose}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-        </Transition.Child>
-
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              enterTo="opacity-100 translate-y-0 sm:scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                <div className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
-                  <button
-                    type="button"
-                    className="rounded-md bg-white dark:bg-gray-800 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
-                    onClick={onClose}
-                  >
-                    <X className="h-6 w-6" />
-                  </button>
-                </div>
+  const CreateTeamModal: React.FC<CreateTeamModalProps> = ({ isOpen, onClose }) => {
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+    const [selectedColor, setSelectedColor] = useState(teamColors[0])
+    const [loading, setLoading] = useState(false)
+    const { user } = useAuth()
+  
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault()
+      if (!name.trim() || !user) return
+      setLoading(true)
+      try {
+        await createTeam({
+          name,
+          description,
+          color: selectedColor,
+          owner: {
+            id: user.uid,
+            name: user.displayName || user.email || "User",
+            email: user.email || "",
+            avatar: user.photoURL || undefined,
+          },
+        })
+        toast.success(`Team "${name}" created successfully`)
+        setName("")
+        setDescription("")
+        setSelectedColor(teamColors[0])
+        onClose()
+      } catch (err) {
+        // Log error detail ke console
+        // eslint-disable-next-line no-console
+        console.error("Create team error:", err)
+        toast.error("Failed to create team. Please try again.")
+      } finally {
+        setLoading(false)
+      }
+    }
+  
+    return (
+      <Transition.Root show={isOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-50" onClose={onClose}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+  
+          <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                  <div className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
+                    <button
+                      type="button"
+                      className="rounded-md bg-white dark:bg-gray-800 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+                      onClick={onClose}
+                    >
+                      <X className="h-6 w-6" />
+                    </button>
+                  </div>
 
                 <div className="sm:flex sm:items-start">
                   <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/20 sm:mx-0 sm:h-10 sm:w-10">
@@ -174,6 +190,8 @@ export function CreateTeamModal({ isOpen, onClose }: CreateTeamModalProps) {
           </div>
         </div>
       </Dialog>
-    </Transition.Root>
+      </Transition.Root>
   )
 }
+
+export default CreateTeamModal

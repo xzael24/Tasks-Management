@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { User, Bell, Shield, Palette, Globe, Trash2, Save, Camera } from "lucide-react"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { useAuth } from "@/lib/auth-context"
 import { useTheme } from "next-themes"
 import { updateProfile } from "firebase/auth"
@@ -69,11 +70,12 @@ export function SettingsView() {
 
               <div className="flex items-center space-x-6 mb-6">
                 <div className="relative">
-                  <img
-                    src={user?.photoURL || "/placeholder.svg?height=80&width=80"}
-                    alt="Profile"
-                    className="w-20 h-20 rounded-full"
-                  />
+                  <Avatar className="w-20 h-20">
+                    {user?.photoURL ? (
+                      <AvatarImage src={user.photoURL} alt={user?.displayName || "Profile"} />
+                    ) : null}
+                    <AvatarFallback name={user?.displayName || user?.email || "Profile"} />
+                  </Avatar>
                   <button className="absolute bottom-0 right-0 p-1 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
                     <Camera className="h-4 w-4" />
                   </button>

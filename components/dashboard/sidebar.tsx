@@ -15,6 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { useTask } from "@/lib/task-context"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -169,11 +170,12 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
         {/* User Profile */}
         <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center">
-            <img
-              className="h-8 w-8 rounded-full"
-              src={user?.photoURL || "/placeholder.svg?height=32&width=32"}
-              alt={user?.displayName || "User"}
-            />
+            <Avatar className="h-8 w-8">
+              {user?.photoURL ? (
+                <AvatarImage src={user.photoURL} alt={user?.displayName || "User"} />
+              ) : null}
+              <AvatarFallback name={user?.displayName || user?.email || "User"} />
+            </Avatar>
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-900 dark:text-white">{user?.displayName || "User"}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">{user?.email}</p>
