@@ -53,14 +53,14 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
 
   const handleCreateList = async () => {
     if (!newListName.trim()) {
-      toast.error("Please enter a list name")
+      toast.error("Mohon masukkan nama daftar")
       return
     }
 
     // Check for duplicate names
     const existingList = allLists.find((list) => list.name.toLowerCase() === newListName.trim().toLowerCase())
     if (existingList) {
-      toast.error("A list with this name already exists")
+      toast.error("Nama daftar sudah digunakan")
       return
     }
 
@@ -79,9 +79,9 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
       setNewListColor(predefinedColors[0])
       setNewListDescription("")
       setShowNewListForm(false)
-      toast.success("List created successfully!")
+      toast.success("Daftar berhasil dibuat!")
     } catch (error) {
-      toast.error("Failed to create list")
+      toast.error("Gagal membuat daftar")
       console.error("Error creating list:", error)
     } finally {
       setIsLoading(false)
@@ -90,19 +90,19 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
 
   const handleUpdateList = async (list: TaskList, name: string, color: string, description?: string) => {
     if (list.isDefault) {
-      toast.error("Cannot edit default lists")
+      toast.error("Daftar bawaan tidak dapat diedit")
       return
     }
 
     if (!name.trim()) {
-      toast.error("Please enter a list name")
+      toast.error("Mohon masukkan nama daftar")
       return
     }
 
     // Check for duplicate names (excluding current list)
     const existingList = allLists.find((l) => l.id !== list.id && l.name.toLowerCase() === name.trim().toLowerCase())
     if (existingList) {
-      toast.error("A list with this name already exists")
+      toast.error("Nama daftar sudah digunakan")
       return
     }
 
@@ -114,9 +114,9 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
         description: description?.trim() || undefined,
       })
       setEditingList(null)
-      toast.success("List updated successfully!")
+      toast.success("Daftar berhasil diperbarui!")
     } catch (error) {
-      toast.error("Failed to update list")
+      toast.error("Gagal memperbarui daftar")
       console.error("Error updating list:", error)
     } finally {
       setIsLoading(false)
@@ -126,7 +126,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
   const handleDeleteList = async (listId: string) => {
     const list = allLists.find((l) => l.id === listId)
     if (!list || list.isDefault) {
-      toast.error("Cannot delete default lists")
+      toast.error("Daftar bawaan tidak dapat dihapus")
       return
     }
 
@@ -134,17 +134,17 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
 
     const confirmMessage =
       tasksCount > 0
-        ? `This list contains ${tasksCount} task(s). They will be moved to "Personal" list. Continue?`
-        : "Are you sure you want to delete this list?"
+        ? `Daftar ini berisi ${tasksCount} tugas. Tugas-tugas tersebut akan dipindahkan ke daftar "Pribadi". Lanjutkan?`
+        : "Apakah Anda yakin ingin menghapus daftar ini?"
 
     if (!window.confirm(confirmMessage)) return
 
     setIsLoading(true)
     try {
       await deleteList(listId)
-      toast.success("List deleted successfully!")
+      toast.success("Daftar berhasil dihapus!")
     } catch (error) {
-      toast.error("Failed to delete list")
+      toast.error("Gagal menghapus daftar")
       console.error("Error deleting list:", error)
     } finally {
       setIsLoading(false)
@@ -179,8 +179,8 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
           <div>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Manage Lists</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Create, edit, and organize your task lists</p>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Kelola Daftar</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Buat, edit, dan atur daftar tugas Anda</p>
           </div>
           <button
             onClick={onClose}
@@ -197,7 +197,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search lists..."
+                placeholder="Cari daftar..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -208,9 +208,9 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
               onChange={(e) => setFilterBy(e.target.value as "all" | "default" | "custom")}
               className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
-              <option value="all">All Lists</option>
-              <option value="default">Default Lists</option>
-              <option value="custom">Custom Lists</option>
+              <option value="all">Semua Daftar</option>
+              <option value="default">Daftar Bawaan</option>
+              <option value="custom">Daftar Kustom</option>
             </select>
           </div>
         </div>
@@ -225,7 +225,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                 className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <Plus className="h-4 w-4" />
-                <span>Create New List</span>
+                <span>Buat Daftar Baru</span>
               </button>
             ) : (
               <motion.div
@@ -234,18 +234,18 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                 exit={{ opacity: 0, height: 0 }}
                 className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-6 space-y-4"
               >
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Create New List</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Buat Daftar Baru</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      List Name *
+                      Nama Daftar *
                     </label>
                     <input
                       type="text"
                       value={newListName}
                       onChange={(e) => setNewListName(e.target.value)}
-                      placeholder="Enter list name..."
+                      placeholder="Masukkan nama daftar..."
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       maxLength={50}
                     />
@@ -254,7 +254,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       <Palette className="inline h-4 w-4 mr-1" />
-                      Color
+                      Warna
                     </label>
                     <div className="flex flex-wrap gap-2">
                       {predefinedColors.map((color) => (
@@ -276,12 +276,12 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Description (Optional)
+                    Deskripsi (Opsional)
                   </label>
                   <textarea
                     value={newListDescription}
                     onChange={(e) => setNewListDescription(e.target.value)}
-                    placeholder="Describe what this list is for..."
+                    placeholder="Deskripsikan tujuan daftar ini..."
                     rows={2}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     maxLength={200}
@@ -299,14 +299,14 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                     ) : (
                       <Check className="h-4 w-4" />
                     )}
-                    <span>{isLoading ? "Creating..." : "Create List"}</span>
+                    <span>{isLoading ? "Membuat..." : "Buat Daftar"}</span>
                   </button>
                   <button
                     onClick={resetNewListForm}
                     disabled={isLoading}
                     className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors disabled:opacity-50"
                   >
-                    Cancel
+                    Batal
                   </button>
                 </div>
               </motion.div>
@@ -316,13 +316,13 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
           {/* Lists */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white">Lists ({filteredLists.length})</h3>
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">Daftar ({filteredLists.length})</h3>
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
                   className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  Clear search
+                  Hapus pencarian
                 </button>
               )}
             </div>
@@ -332,7 +332,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-8">
                   <Filter className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-500 dark:text-gray-400">
-                    {searchQuery ? `No lists match "${searchQuery}"` : "No lists found"}
+                    {searchQuery ? `Tidak ada daftar yang cocok dengan "${searchQuery}"` : "Tidak ada daftar ditemukan"}
                   </p>
                 </motion.div>
               ) : (
@@ -355,7 +355,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                               type="text"
                               defaultValue={list.name}
                               className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                              placeholder="List name"
+                              placeholder="Nama daftar"
                               onKeyPress={(e) => {
                                 if (e.key === "Enter") {
                                   const target = e.target as HTMLInputElement
@@ -383,7 +383,7 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                           </div>
                           <textarea
                             defaultValue={list.description || ""}
-                            placeholder="Description (optional)"
+                            placeholder="Deskripsi (opsional)"
                             rows={2}
                             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                           />
@@ -394,13 +394,13 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                             <h4 className="font-medium text-gray-900 dark:text-white">{list.name}</h4>
                             {list.isDefault && (
                               <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full">
-                                Default
+                                Bawaan
                               </span>
                             )}
                           </div>
                           <div className="flex items-center space-x-4 mt-1">
                             <p className="text-sm text-gray-500 dark:text-gray-400">
-                              {getTaskCount(list.id)} total • {getPendingTaskCount(list.id)} pending
+                              {getTaskCount(list.id)} total • {getPendingTaskCount(list.id)} belum selesai
                             </p>
                             {list.description && (
                               <p className="text-sm text-gray-400 dark:text-gray-500 truncate max-w-xs">
@@ -447,14 +447,14 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
                               <button
                                 onClick={() => setEditingList(list)}
                                 className="p-2 text-gray-400 hover:text-blue-600 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
-                                title="Edit list"
+                                title="Edit daftar"
                               >
                                 <Edit className="h-4 w-4" />
                               </button>
                               <button
                                 onClick={() => handleDeleteList(list.id)}
                                 className="p-2 text-gray-400 hover:text-red-600 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                                title="Delete list"
+                                title="Hapus daftar"
                               >
                                 <Trash2 className="h-4 w-4" />
                               </button>
@@ -474,13 +474,13 @@ export function ListManager({ isOpen, onClose }: ListManagerProps) {
         <div className="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
           <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
             <span>
-              {allLists.length} total lists • {lists.length} custom • {defaultLists.length} default
+              {allLists.length} total daftar • {lists.length} kustom • {defaultLists.length} bawaan
             </span>
             <button
               onClick={onClose}
               className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
             >
-              Done
+              Selesai
             </button>
           </div>
         </div>

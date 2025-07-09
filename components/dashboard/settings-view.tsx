@@ -30,11 +30,11 @@ export function SettingsView() {
   const [taskVisibility, setTaskVisibility] = useState("private")
 
   const tabs = [
-    { id: "profile", name: "Profile", icon: User },
-    { id: "notifications", name: "Notifications", icon: Bell },
-    { id: "privacy", name: "Privacy", icon: Shield },
-    { id: "appearance", name: "Appearance", icon: Palette },
-    { id: "account", name: "Account", icon: Globe },
+    { id: "profile", name: "Profil", icon: User },
+    { id: "notifications", name: "Notifikasi", icon: Bell },
+    { id: "privacy", name: "Privasi", icon: Shield },
+    { id: "appearance", name: "Tampilan", icon: Palette },
+    { id: "account", name: "Akun", icon: Globe },
   ]
 
   const handleUpdateProfile = async () => {
@@ -45,18 +45,18 @@ export function SettingsView() {
       await updateProfile(user, {
         displayName: displayName,
       })
-      toast.success("Profile updated successfully")
+      toast.success("Profil berhasil diperbarui")
     } catch (error) {
-      toast.error("Failed to update profile")
+      toast.error("Gagal memperbarui profil")
     } finally {
       setLoading(false)
     }
   }
 
   const handleDeleteAccount = async () => {
-    if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
-      // Implement account deletion logic here
-      toast.error("Account deletion is not implemented yet")
+    if (window.confirm("Apakah Anda yakin ingin menghapus akun? Tindakan ini tidak dapat dibatalkan.")) {
+      // Implementasi penghapusan akun di sini
+      toast.error("Fitur hapus akun belum tersedia")
     }
   }
 
@@ -66,7 +66,7 @@ export function SettingsView() {
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Profile Information</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Informasi Profil</h3>
 
               <div className="flex items-center space-x-6 mb-6">
                 <div className="relative">
@@ -89,7 +89,7 @@ export function SettingsView() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Display Name
+                    Nama Tampilan
                   </label>
                   <input
                     type="text"
@@ -101,7 +101,7 @@ export function SettingsView() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email Address
+                    Alamat Email
                   </label>
                   <input
                     type="email"
@@ -109,7 +109,7 @@ export function SettingsView() {
                     disabled
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-600 text-gray-500 dark:text-gray-400"
                   />
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Email cannot be changed</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Email tidak dapat diubah</p>
                 </div>
               </div>
 
@@ -120,7 +120,7 @@ export function SettingsView() {
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   <Save className="h-4 w-4 mr-2" />
-                  {loading ? "Saving..." : "Save Changes"}
+                  {loading ? "Menyimpan..." : "Simpan Perubahan"}
                 </button>
               </div>
             </div>
@@ -131,13 +131,13 @@ export function SettingsView() {
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Notification Preferences</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Preferensi Notifikasi</h3>
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">Email Notifications</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Receive notifications via email</p>
+                    <h4 className="font-medium text-gray-900 dark:text-white">Notifikasi Email</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Terima notifikasi melalui email</p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
@@ -152,8 +152,8 @@ export function SettingsView() {
 
                 <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">Push Notifications</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Receive push notifications in browser</p>
+                    <h4 className="font-medium text-gray-900 dark:text-white">Notifikasi Push</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Terima notifikasi push di browser</p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
@@ -168,8 +168,8 @@ export function SettingsView() {
 
                 <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">Task Reminders</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Get reminded about upcoming due dates</p>
+                    <h4 className="font-medium text-gray-900 dark:text-white">Pengingat Tugas</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Dapatkan pengingat tenggat waktu tugas</p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
@@ -184,8 +184,8 @@ export function SettingsView() {
 
                 <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">Team Updates</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Notifications about team activities</p>
+                    <h4 className="font-medium text-gray-900 dark:text-white">Update Tim</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Notifikasi tentang aktivitas tim</p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
@@ -206,35 +206,35 @@ export function SettingsView() {
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Privacy Settings</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Pengaturan Privasi</h3>
 
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Profile Visibility
+                    Visibilitas Profil
                   </label>
                   <select
                     value={profileVisibility}
                     onChange={(e) => setProfileVisibility(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
-                    <option value="public">Public - Anyone can see your profile</option>
-                    <option value="team">Team Only - Only team members can see your profile</option>
-                    <option value="private">Private - Only you can see your profile</option>
+                    <option value="public">Publik - Semua orang dapat melihat profil Anda</option>
+                    <option value="team">Hanya Tim - Hanya anggota tim yang dapat melihat profil Anda</option>
+                    <option value="private">Pribadi - Hanya Anda yang dapat melihat profil</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Task Visibility
+                    Visibilitas Tugas
                   </label>
                   <select
                     value={taskVisibility}
                     onChange={(e) => setTaskVisibility(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
-                    <option value="private">Private - Only you can see your tasks</option>
-                    <option value="team">Team - Team members can see shared tasks</option>
+                    <option value="private">Pribadi - Hanya Anda yang dapat melihat tugas</option>
+                    <option value="team">Tim - Anggota tim dapat melihat tugas bersama</option>
                   </select>
                 </div>
               </div>
@@ -246,7 +246,7 @@ export function SettingsView() {
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Appearance Settings</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Pengaturan Tampilan</h3>
 
               <div className="space-y-4">
                 <div>
@@ -261,7 +261,7 @@ export function SettingsView() {
                       }`}
                     >
                       <div className="w-full h-16 bg-white rounded border mb-2"></div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">Light</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Terang</p>
                     </button>
 
                     <button
@@ -273,7 +273,7 @@ export function SettingsView() {
                       }`}
                     >
                       <div className="w-full h-16 bg-gray-800 rounded border mb-2"></div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">Dark</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Gelap</p>
                     </button>
 
                     <button
@@ -285,7 +285,7 @@ export function SettingsView() {
                       }`}
                     >
                       <div className="w-full h-16 bg-gradient-to-r from-white to-gray-800 rounded border mb-2"></div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">System</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Sistem</p>
                     </button>
                   </div>
                 </div>
@@ -298,30 +298,30 @@ export function SettingsView() {
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Account Management</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Manajemen Akun</h3>
 
               <div className="space-y-6">
                 <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-                  <h4 className="font-medium text-yellow-800 dark:text-yellow-400 mb-2">Export Data</h4>
+                  <h4 className="font-medium text-yellow-800 dark:text-yellow-400 mb-2">Ekspor Data</h4>
                   <p className="text-sm text-yellow-700 dark:text-yellow-300 mb-3">
-                    Download all your tasks and data in JSON format
+                    Unduh semua tugas dan data Anda dalam format JSON
                   </p>
                   <button className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors">
-                    Export Data
+                    Ekspor Data
                   </button>
                 </div>
 
                 <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                  <h4 className="font-medium text-red-800 dark:text-red-400 mb-2">Danger Zone</h4>
+                  <h4 className="font-medium text-red-800 dark:text-red-400 mb-2">Zona Bahaya</h4>
                   <p className="text-sm text-red-700 dark:text-red-300 mb-3">
-                    Once you delete your account, there is no going back. Please be certain.
+                    Jika Anda menghapus akun, tindakan ini tidak dapat dibatalkan. Pastikan keputusan Anda.
                   </p>
                   <button
                     onClick={handleDeleteAccount}
                     className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
-                    Delete Account
+                    Hapus Akun
                   </button>
                 </div>
               </div>
@@ -338,8 +338,8 @@ export function SettingsView() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Settings</h1>
-        <p className="text-gray-600 dark:text-gray-400">Manage your account settings and preferences</p>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Pengaturan</h1>
+        <p className="text-gray-600 dark:text-gray-400">Kelola pengaturan dan preferensi akun Anda</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">

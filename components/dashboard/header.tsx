@@ -25,7 +25,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           <Search className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400 ml-3" />
           <input
             className="block h-full w-full border-0 bg-transparent py-0 pl-10 pr-0 text-gray-900 dark:text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-            placeholder="Search tasks..."
+            placeholder="Cari tugas..."
             type="search"
           />
         </div>
@@ -49,7 +49,7 @@ export function Header({ onMenuClick }: HeaderProps) {
             onClick={logout}
             className="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
-            Logout
+            Keluar
           </button>
         </div>
       </div>

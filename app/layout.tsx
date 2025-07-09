@@ -8,9 +8,9 @@ import { Toaster } from "react-hot-toast"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "TaskFlow - Modern Todo App",
-  description: "A modern, collaborative todo application with real-time sync",
-    generator: 'v0.dev'
+  title: "TaskFlow - Aplikasi Todo Modern",
+  description: "Aplikasi todo modern dan kolaboratif dengan sinkronisasi waktu nyata",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
           {children}

@@ -6,26 +6,26 @@ import { Star } from "lucide-react"
 const testimonials = [
   {
     name: "Sarah Johnson",
-    role: "Product Manager",
+    role: "Manajer Produk",
     company: "TechCorp",
-    content: "TaskFlow has revolutionized how our team manages projects. The collaboration features are incredible!",
+    content: "TaskFlow benar-benar mengubah cara tim kami mengelola proyek. Fitur kolaborasinya luar biasa!",
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
   },
   {
     name: "Mike Chen",
-    role: "Freelance Designer",
-    company: "Independent",
-    content: "The most beautiful and intuitive todo app I've ever used. The dark mode is perfect for late-night work.",
+    role: "Desainer Freelance",
+    company: "Mandiri",
+    content: "Aplikasi todo paling cantik dan intuitif yang pernah saya pakai. Mode gelapnya cocok banget buat kerja malam.",
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
   },
   {
     name: "Emily Rodriguez",
-    role: "Marketing Director",
+    role: "Direktur Marketing",
     company: "StartupXYZ",
     content:
-      "Real-time sync across devices is a game-changer. I can start a task on my phone and finish it on my laptop.",
+      "Sinkronisasi real-time di semua perangkat benar-benar membantu. Saya bisa mulai tugas di HP dan lanjut di laptop.",
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60",
   },
@@ -42,10 +42,10 @@ export function TestimonialsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Loved by Thousands of Users
+            Dicintai Ribuan Pengguna
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            See what our users are saying about TaskFlow and how it's helping them stay organized.
+            Lihat apa kata para pengguna TaskFlow dan bagaimana aplikasi ini membantu mereka tetap terorganisir.
           </p>
         </motion.div>
 

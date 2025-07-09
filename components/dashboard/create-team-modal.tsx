@@ -44,12 +44,12 @@ const teamColors = [
           color: selectedColor,
           owner: {
             id: user.uid,
-            name: user.displayName || user.email || "User",
+            name: user.displayName || user.email || "Pengguna",
             email: user.email || "",
             avatar: user.photoURL || undefined,
           },
         })
-        toast.success(`Team "${name}" created successfully`)
+        toast.success(`Tim \"${name}\" berhasil dibuat`)
         setName("")
         setDescription("")
         setSelectedColor(teamColors[0])
@@ -58,7 +58,7 @@ const teamColors = [
         // Log error detail ke console
         // eslint-disable-next-line no-console
         console.error("Create team error:", err)
-        toast.error("Failed to create team. Please try again.")
+        toast.error("Gagal membuat tim. Silakan coba lagi.")
       } finally {
         setLoading(false)
       }
@@ -107,46 +107,46 @@ const teamColors = [
                   </div>
                   <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
                     <Dialog.Title as="h3" className="text-lg font-semibold leading-6 text-gray-900 dark:text-white">
-                      Create New Team
+                      Buat Tim Baru
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500 dark:text-gray-400">
-                        Create a new team to collaborate with others on tasks and projects.
+                        Buat tim baru untuk berkolaborasi dengan anggota lain dalam tugas dan proyek.
                       </p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Team Name
+                          Nama Tim
                         </label>
                         <input
                           type="text"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Enter team name"
+                          placeholder="Masukkan nama tim"
                           required
                         />
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Description (Optional)
+                          Deskripsi (Opsional)
                         </label>
                         <textarea
                           value={description}
                           onChange={(e) => setDescription(e.target.value)}
                           rows={3}
                           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          placeholder="Describe your team's purpose..."
+                          placeholder="Jelaskan tujuan tim Anda..."
                         />
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                           <Palette className="inline h-4 w-4 mr-1" />
-                          Team Color
+                          Warna Tim
                         </label>
                         <div className="grid grid-cols-5 gap-3">
                           {teamColors.map((color) => (
@@ -171,7 +171,7 @@ const teamColors = [
                           onClick={onClose}
                           className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600"
                         >
-                          Cancel
+                          Batal
                         </button>
                         <button
                           type="submit"
@@ -179,7 +179,7 @@ const teamColors = [
                           className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <Users className="h-4 w-4 mr-2" />
-                          {loading ? "Creating..." : "Create Team"}
+                          {loading ? "Membuat..." : "Buat Tim"}
                         </button>
                       </div>
                     </form>

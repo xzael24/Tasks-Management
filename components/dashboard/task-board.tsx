@@ -146,9 +146,9 @@ export function TaskBoard() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">My Tasks</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Tugas Saya</h1>
             <p className="text-gray-600 dark:text-gray-400">
-              {filteredAndSortedTasks.length} tasks • {allLists.length} lists
+              {filteredAndSortedTasks.length} tugas {allLists.length} daftar
             </p>
           </div>
           <div className="flex items-center space-x-3">
@@ -157,14 +157,14 @@ export function TaskBoard() {
               className="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
             >
               <Settings className="h-4 w-4 mr-2" />
-              <span className="hidden sm:inline">Manage Lists</span>
+              <span className="hidden sm:inline">Kelola Daftar</span>
             </button>
             <button
               onClick={() => setIsModalOpen(true)}
               className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               <Plus className="h-5 w-5 mr-2" />
-              <span className="hidden sm:inline">Add Task</span>
+              <span className="hidden sm:inline">Tambah Tugas</span>
             </button>
           </div>
         </div>
@@ -192,7 +192,7 @@ export function TaskBoard() {
               }`}
             >
               <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
-              <span className="font-medium whitespace-nowrap">All Tasks</span>
+              <span className="font-medium whitespace-nowrap">Semua Tugas</span>
               <span className="text-sm bg-gray-200 dark:bg-gray-600 px-2 py-1 rounded-full">
                 {tasks.filter((t) => !t.completed).length}
               </span>
@@ -239,7 +239,7 @@ export function TaskBoard() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search tasks..."
+                placeholder="Cari tugas..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -253,10 +253,10 @@ export function TaskBoard() {
                 onChange={(e) => setFilterBy(e.target.value as FilterBy)}
                 className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="all">All Tasks</option>
-                <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
-                <option value="overdue">Overdue</option>
+                <option value="all">Semua Tugas</option>
+                <option value="pending">Belum Selesai</option>
+                <option value="completed">Selesai</option>
+                <option value="overdue">Terlambat</option>
               </select>
 
               <select
@@ -264,10 +264,10 @@ export function TaskBoard() {
                 onChange={(e) => setSortBy(e.target.value as SortBy)}
                 className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="created">Recently Created</option>
-                <option value="dueDate">Due Date</option>
-                <option value="priority">Priority</option>
-                <option value="alphabetical">Alphabetical</option>
+                <option value="created">Terbaru</option>
+                <option value="dueDate">Jatuh Tempo</option>
+                <option value="priority">Prioritas</option>
+                <option value="alphabetical">Alfabet</option>
               </select>
             </div>
           </div>
@@ -278,10 +278,10 @@ export function TaskBoard() {
           <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {selectedListId === "all" ? "All Tasks" : getListName(selectedListId)}
+                {selectedListId === "all" ? "Semua Tugas" : getListName(selectedListId)}
               </h2>
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-500 dark:text-gray-400">{filteredAndSortedTasks.length} tasks</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">{filteredAndSortedTasks.length} tugas</span>
                 {selectedListId !== "all" && (
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: getListColor(selectedListId) }} />
                 )}
@@ -303,20 +303,20 @@ export function TaskBoard() {
                     <div className="text-gray-400 mb-6">
                       <Filter className="h-16 w-16 mx-auto mb-4" />
                     </div>
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No tasks found</h3>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Tidak ada tugas</h3>
                     <p className="text-gray-500 dark:text-gray-400 mb-6">
                       {searchQuery
-                        ? `No tasks match "${searchQuery}"`
+                        ? `Tidak ada tugas yang cocok dengan \"${searchQuery}\"`
                         : selectedListId === "all"
-                          ? "Start by creating your first task"
-                          : `No tasks in ${getListName(selectedListId)}`}
+                          ? "Mulai dengan membuat tugas pertamamu"
+                          : `Tidak ada tugas di ${getListName(selectedListId)}`}
                     </p>
                     <button
                       onClick={() => setIsModalOpen(true)}
                       className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                     >
                       <Plus className="h-5 w-5 mr-2" />
-                      Add Task
+                      Tambah Tugas
                     </button>
                   </div>
                 ) : (

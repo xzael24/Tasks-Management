@@ -8,20 +8,20 @@ import { TaskModal } from "./task-modal"
 import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd"
 import { Timestamp } from "firebase/firestore"
 
-const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+const DAYS = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"]
 const MONTHS = [
-  "January",
-  "February",
-  "March",
+  "Januari",
+  "Februari",
+  "Maret",
   "April",
-  "May",
-  "June",
-  "July",
-  "August",
+  "Mei",
+  "Juni",
+  "Juli",
+  "Agustus",
   "September",
-  "October",
+  "Oktober",
   "November",
-  "December",
+  "Desember",
 ]
 
 export function CalendarView() {
@@ -148,8 +148,8 @@ export function CalendarView() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Calendar</h1>
-            <p className="text-gray-600 dark:text-gray-400">View and manage your tasks by date</p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Kalender</h1>
+            <p className="text-gray-600 dark:text-gray-400">Lihat dan kelola tugas berdasarkan tanggal</p>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -160,10 +160,10 @@ export function CalendarView() {
                 onChange={(e) => setFilterPriority(e.target.value)}
                 className="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-sm"
               >
-                <option value="all">All Priorities</option>
-                <option value="high">High Priority</option>
-                <option value="medium">Medium Priority</option>
-                <option value="low">Low Priority</option>
+                <option value="all">Semua Prioritas</option>
+                <option value="high">Prioritas Tinggi</option>
+                <option value="medium">Prioritas Sedang</option>
+                <option value="low">Prioritas Rendah</option>
               </select>
             </div>
 
@@ -172,7 +172,7 @@ export function CalendarView() {
               className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               <Plus className="h-4 w-4 mr-2" />
-              Add Task
+              Tambah Tugas
             </button>
           </div>
         </div>
@@ -200,7 +200,7 @@ export function CalendarView() {
                 onClick={() => setCurrentDate(new Date())}
                 className="px-3 py-1 text-sm bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
               >
-                Today
+                Hari Ini
               </button>
               <button
                 onClick={() => navigateMonth(1)}
@@ -283,7 +283,7 @@ export function CalendarView() {
 
                         {dayTasks.length > 3 && (
                           <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                            +{dayTasks.length - 3} more
+                            +{dayTasks.length - 3} lagi
                           </div>
                         )}
                       </div>

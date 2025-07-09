@@ -15,12 +15,11 @@ export function HeroSection() {
           className="mb-8"
         >
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
-            Organize Your Life with{" "}
+            Atur Hidupmu dengan{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">TaskFlow</span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            The modern todo app that helps you stay productive, collaborate with your team, and achieve your goals with
-            beautiful design and powerful features.
+            Aplikasi todo modern yang membantu kamu tetap produktif, kolaborasi dengan tim, dan capai tujuan dengan desain indah dan fitur lengkap.
           </p>
         </motion.div>
 
@@ -34,14 +33,14 @@ export function HeroSection() {
             href="/register"
             className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg"
           >
-            Get Started Free
+            Mulai Gratis
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
           <Link
             href="#features"
             className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-gray-900 dark:text-white rounded-xl hover:bg-white/20 transition-all"
           >
-            Learn More
+            Pelajari Lebih Lanjut
           </Link>
         </motion.div>
 
@@ -53,15 +52,15 @@ export function HeroSection() {
         >
           <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-300">
             <CheckCircle className="h-5 w-5 text-green-500" />
-            <span>Smart Organization</span>
+            <span>Organisasi Pintar</span>
           </div>
           <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-300">
             <Users className="h-5 w-5 text-blue-500" />
-            <span>Team Collaboration</span>
+            <span>Kolaborasi Tim</span>
           </div>
           <div className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-300">
             <Zap className="h-5 w-5 text-purple-500" />
-            <span>Real-time Sync</span>
+            <span>Sinkronisasi Real-time</span>
           </div>
         </motion.div>
       </div>

@@ -35,7 +35,7 @@ export function Header() {
               href="/dashboard"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
-              Dashboard
+              Dasbor
             </Link>
           ) : (
             <div className="flex space-x-2">
@@ -43,13 +43,13 @@ export function Header() {
                 href="/login"
                 className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors"
               >
-                Login
+                Masuk
               </Link>
               <Link
                 href="/register"
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
-                Sign Up
+                Daftar
               </Link>
             </div>
           )}

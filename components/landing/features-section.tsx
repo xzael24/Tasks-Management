@@ -6,43 +6,43 @@ import { CheckSquare, Users, Palette, Smartphone, Zap, Shield, Calendar, Bell } 
 const features = [
   {
     icon: CheckSquare,
-    title: "Smart Task Management",
-    description: "Organize tasks with priorities, categories, and due dates. Drag and drop to reorder effortlessly.",
+    title: "Manajemen Tugas Pintar",
+    description: "Atur tugas dengan prioritas, kategori, dan tenggat waktu. Drag and drop untuk mengurutkan dengan mudah.",
   },
   {
     icon: Users,
-    title: "Team Collaboration",
-    description: "Invite team members to lists, assign tasks, and work together in real-time.",
+    title: "Kolaborasi Tim",
+    description: "Undang anggota tim ke daftar, tetapkan tugas, dan bekerja sama secara real-time.",
   },
   {
     icon: Palette,
-    title: "Beautiful Design",
-    description: "Clean, modern interface with dark/light mode and customizable themes.",
+    title: "Desain Menarik",
+    description: "Tampilan modern dan bersih dengan mode gelap/terang dan tema yang bisa disesuaikan.",
   },
   {
     icon: Smartphone,
-    title: "Mobile Responsive",
-    description: "Works perfectly on all devices - desktop, tablet, and mobile.",
+    title: "Responsif di Semua Perangkat",
+    description: "Berjalan sempurna di desktop, tablet, maupun ponsel.",
   },
   {
     icon: Zap,
-    title: "Real-time Sync",
-    description: "Changes sync instantly across all your devices and team members.",
+    title: "Sinkronisasi Real-time",
+    description: "Perubahan tersinkron otomatis di semua perangkat dan anggota tim Anda.",
   },
   {
     icon: Shield,
-    title: "Secure & Private",
-    description: "Your data is encrypted and secure with Firebase authentication.",
+    title: "Aman & Privat",
+    description: "Data Anda terenkripsi dan aman dengan autentikasi Firebase.",
   },
   {
     icon: Calendar,
-    title: "Due Date Tracking",
-    description: "Never miss a deadline with smart due date reminders and calendar integration.",
+    title: "Pantau Tenggat Waktu",
+    description: "Tidak pernah ketinggalan deadline dengan pengingat cerdas dan integrasi kalender.",
   },
   {
     icon: Bell,
-    title: "Smart Notifications",
-    description: "Get notified about important updates, deadlines, and team activities.",
+    title: "Notifikasi Cerdas",
+    description: "Dapatkan notifikasi untuk update penting, deadline, dan aktivitas tim.",
   },
 ]
 
@@ -57,11 +57,10 @@ export function FeaturesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Everything You Need to Stay Productive
+            Semua yang Kamu Butuhkan untuk Tetap Produktif
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            TaskFlow combines powerful features with beautiful design to help you and your team accomplish more every
-            day.
+            TaskFlow menggabungkan fitur canggih dengan desain indah agar kamu dan tim bisa menyelesaikan lebih banyak setiap hari.
           </p>
         </motion.div>
 

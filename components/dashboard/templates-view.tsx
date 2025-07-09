@@ -10,16 +10,16 @@ import { UseTemplateModal } from "./use-template-modal"
 import type { TaskTemplate } from "@/types"
 
 const templateCategories = [
-  "All",
-  "Project Management",
-  "Marketing",
-  "Development",
-  "Design",
-  "Content Creation",
-  "Event Planning",
-  "Personal",
-  "Business",
-  "Education",
+  "Semua",
+  "Manajemen Proyek",
+  "Pemasaran",
+  "Pengembangan",
+  "Desain",
+  "Pembuatan Konten",
+  "Perencanaan Acara",
+  "Pribadi",
+  "Bisnis",
+  "Edukasi",
 ]
 
 export function TemplatesView() {
@@ -115,9 +115,9 @@ export function TemplatesView() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Task Templates</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Template Tugas</h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Create and use reusable task templates for common workflows
+            Buat dan gunakan template tugas untuk alur kerja yang sering digunakan
           </p>
         </div>
 
@@ -126,7 +126,7 @@ export function TemplatesView() {
           className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
           <Plus className="h-4 w-4 mr-2" />
-          Create Template
+          Buat Template
         </button>
       </div>
 
@@ -142,7 +142,7 @@ export function TemplatesView() {
             }`}
           >
             <BookOpen className="inline h-4 w-4 mr-2" />
-            My Templates ({templates.length})
+            Template Saya ({templates.length})
           </button>
           <button
             onClick={() => setActiveTab("public-templates")}
@@ -153,7 +153,7 @@ export function TemplatesView() {
             }`}
           >
             <Users className="inline h-4 w-4 mr-2" />
-            Public Templates ({publicTemplates.length})
+            Template Publik ({publicTemplates.length})
           </button>
         </nav>
       </div>
@@ -164,7 +164,7 @@ export function TemplatesView() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
           <input
             type="text"
-            placeholder="Search templates..."
+            placeholder="Cari template..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -224,20 +224,20 @@ export function TemplatesView() {
             {/* Template Info */}
             <div className="space-y-3 mb-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500 dark:text-gray-400">Category:</span>
-                <span className="font-medium text-gray-900 dark:text-white">{template.category}</span>
+          <span className="text-gray-500 dark:text-gray-400">Kategori:</span>
+          <span className="font-medium text-gray-900 dark:text-white">{template.category}</span>
               </div>
 
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500 dark:text-gray-400">Tasks:</span>
-                <span className="font-medium text-gray-900 dark:text-white">{template.tasks.length}</span>
+          <span className="text-gray-500 dark:text-gray-400">Tugas:</span>
+          <span className="font-medium text-gray-900 dark:text-white">{template.tasks.length}</span>
               </div>
 
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500 dark:text-gray-400">Duration:</span>
-                <span className="font-medium text-gray-900 dark:text-white">
-                  {formatDuration(template.estimatedDuration)}
-                </span>
+          <span className="text-gray-500 dark:text-gray-400">Durasi:</span>
+          <span className="font-medium text-gray-900 dark:text-white">
+            {formatDuration(template.estimatedDuration)}
+          </span>
               </div>
 
               {activeTab === "public-templates" && (
@@ -263,7 +263,7 @@ export function TemplatesView() {
                 ))}
                 {template.tasks.length > 3 && (
                   <div className="text-xs text-gray-500 dark:text-gray-400">
-                    +{template.tasks.length - 3} more tasks
+                    +{template.tasks.length - 3} tugas lagi
                   </div>
                 )}
               </div>
@@ -297,7 +297,7 @@ export function TemplatesView() {
                 className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <Play className="h-4 w-4 mr-1" />
-                Use Template
+                Gunakan Template
               </button>
 
               {activeTab === "public-templates" && (
@@ -317,11 +317,11 @@ export function TemplatesView() {
       {filteredTemplates.length === 0 && (
         <div className="text-center py-12">
           <BookOpen className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No templates found</h3>
+          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Tidak ada template</h3>
           <p className="text-gray-500 dark:text-gray-400 mb-4">
             {activeTab === "my-templates"
-              ? "Create your first template to get started"
-              : "Try adjusting your search or category filter"}
+              ? "Buat template pertamamu untuk memulai"
+              : "Coba ubah pencarian atau filter kategori"}
           </p>
           {activeTab === "my-templates" && (
             <button
@@ -329,7 +329,7 @@ export function TemplatesView() {
               className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               <Plus className="h-4 w-4 mr-2" />
-              Create Template
+              Buat Template
             </button>
           )}
         </div>

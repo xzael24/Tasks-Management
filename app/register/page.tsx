@@ -97,37 +97,37 @@ export default function RegisterPage() {
               <CheckSquare className="h-8 w-8 text-blue-600" />
               <span className="text-2xl font-bold text-gray-900 dark:text-white">TaskFlow</span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Create Account</h1>
-            <p className="text-gray-600 dark:text-gray-300">Join thousands of productive users</p>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Buat Akun</h1>
+            <p className="text-gray-600 dark:text-gray-300">Bergabunglah dengan ribuan pengguna produktif</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nama Lengkap</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
                 className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="Enter your full name"
+                placeholder="Masukkan nama lengkap Anda"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Alamat Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="Enter your email"
+                placeholder="Masukkan email Anda"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Kata Sandi</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -135,7 +135,7 @@ export default function RegisterPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pr-12"
-                  placeholder="Create a password"
+                  placeholder="Buat kata sandi"
                 />
                 <button
                   type="button"
@@ -149,7 +149,7 @@ export default function RegisterPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Confirm Password
+                Konfirmasi Kata Sandi
               </label>
               <input
                 type="password"
@@ -157,7 +157,7 @@ export default function RegisterPage() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="Confirm your password"
+                placeholder="Konfirmasi kata sandi"
               />
             </div>
 
@@ -166,7 +166,7 @@ export default function RegisterPage() {
               disabled={loading}
               className="w-full py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
             >
-              {loading ? "Creating Account..." : "Create Account"}
+              {loading ? "Membuat Akun..." : "Buat Akun"}
             </button>
             <button
               type="button"
@@ -187,15 +187,15 @@ export default function RegisterPage() {
                   </clipPath>
                 </defs>
               </svg>
-              {loading ? "Signing up with Google..." : "Sign up with Google"}
+              {loading ? "Sedang daftar dengan Google..." : "Daftar dengan Google"}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600 dark:text-gray-300">
-              Already have an account?{" "}
+              Sudah punya akun?{" "}
               <Link href="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
-                Sign in
+                Masuk
               </Link>
             </p>
           </div>
@@ -205,7 +205,7 @@ export default function RegisterPage() {
               href="/"
               className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              ← Back to home
+              ← Kembali ke beranda
             </Link>
           </div>
         </div>

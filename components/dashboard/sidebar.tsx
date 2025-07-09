@@ -32,16 +32,16 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
   const [showAllLists, setShowAllLists] = useState(false)
 
   const navigation = [
-    { name: "Dashboard", href: "/dashboard", icon: Home, current: pathname === "/dashboard" },
-    { name: "Calendar", href: "/dashboard/calendar", icon: Calendar, current: pathname === "/dashboard/calendar" },
+    { name: "Dasbor", href: "/dashboard", icon: Home, current: pathname === "/dashboard" },
+    { name: "Kalender", href: "/dashboard/calendar", icon: Calendar, current: pathname === "/dashboard/calendar" },
     {
-      name: "Templates",
+      name: "Template",
       href: "/dashboard/templates",
       icon: BookTemplate,
       current: pathname === "/dashboard/templates",
     },
-    { name: "Team", href: "/dashboard/team", icon: Users, current: pathname === "/dashboard/team" },
-    { name: "Settings", href: "/dashboard/settings", icon: Settings, current: pathname === "/dashboard/settings" },
+    { name: "Tim", href: "/dashboard/team", icon: Users, current: pathname === "/dashboard/team" },
+    { name: "Pengaturan", href: "/dashboard/settings", icon: Settings, current: pathname === "/dashboard/settings" },
   ]
 
   const allLists = [...defaultLists, ...lists]
@@ -93,23 +93,23 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
 
         {/* Task Statistics */}
         <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-700">
-          <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-3">Overview</h3>
+          <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-3">Ringkasan</h3>
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-600 dark:text-gray-400">Total Tasks</span>
+              <span className="text-gray-600 dark:text-gray-400">Total Tugas</span>
               <span className="font-medium text-gray-900 dark:text-white">{totalTasks}</span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-600 dark:text-gray-400">Pending</span>
+              <span className="text-gray-600 dark:text-gray-400">Belum Selesai</span>
               <span className="font-medium text-blue-600 dark:text-blue-400">{pendingTasks}</span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-600 dark:text-gray-400">Completed</span>
+              <span className="text-gray-600 dark:text-gray-400">Selesai</span>
               <span className="font-medium text-green-600 dark:text-green-400">{completedTasks}</span>
             </div>
             {overdueTasks > 0 && (
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600 dark:text-gray-400">Overdue</span>
+                <span className="text-gray-600 dark:text-gray-400">Terlambat</span>
                 <span className="font-medium text-red-600 dark:text-red-400">{overdueTasks}</span>
               </div>
             )}
@@ -119,7 +119,7 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
         {/* Lists Section */}
         <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-medium text-gray-900 dark:text-white">My Lists</h3>
+          <h3 className="text-sm font-medium text-gray-900 dark:text-white">Daftar Saya</h3>
             <div className="flex items-center space-x-1">
               {hasMoreLists && (
                 <button
@@ -161,7 +161,7 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
                 onClick={() => setShowAllLists(true)}
                 className="w-full text-left px-3 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 rounded-lg"
               >
-                +{allLists.length - 6} more lists...
+                +{allLists.length - 6} daftar lainnya...
               </button>
             )}
           </div>

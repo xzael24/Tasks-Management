@@ -85,25 +85,25 @@ export default function LoginPage() {
               <CheckSquare className="h-8 w-8 text-blue-600" />
               <span className="text-2xl font-bold text-gray-900 dark:text-white">TaskFlow</span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back</h1>
-            <p className="text-gray-600 dark:text-gray-300">Sign in to your account to continue</p>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Selamat Datang Kembali</h1>
+            <p className="text-gray-600 dark:text-gray-300">Masuk ke akun Anda untuk melanjutkan</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Alamat Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="Enter your email"
+                placeholder="Masukkan email Anda"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Kata Sandi</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -111,7 +111,7 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pr-12"
-                  placeholder="Enter your password"
+                  placeholder="Masukkan kata sandi"
                 />
                 <button
                   type="button"
@@ -128,7 +128,7 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
             >
-              {loading ? "Signing In..." : "Sign In"}
+              {loading ? "Sedang Masuk..." : "Masuk"}
             </button>
             <button
               type="button"
@@ -149,15 +149,15 @@ export default function LoginPage() {
                   </clipPath>
                 </defs>
               </svg>
-              {loading ? "Signing in with Google..." : "Sign in with Google"}
+              {loading ? "Sedang masuk dengan Google..." : "Masuk dengan Google"}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600 dark:text-gray-300">
-              Don't have an account?{" "}
+              Belum punya akun?{" "}
               <Link href="/register" className="text-blue-600 hover:text-blue-700 font-semibold">
-                Sign up
+                Daftar
               </Link>
             </p>
           </div>
@@ -167,7 +167,7 @@ export default function LoginPage() {
               href="/"
               className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              ← Back to home
+              ← Kembali ke beranda
             </Link>
           </div>
         </div>

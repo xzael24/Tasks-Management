@@ -79,8 +79,8 @@ export function TeamView() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Team Collaboration</h1>
-          <p className="text-gray-600 dark:text-gray-400">Manage your teams and collaborate on tasks</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Kolaborasi Tim</h1>
+          <p className="text-gray-600 dark:text-gray-400">Kelola tim dan kolaborasi dalam tugas</p>
         </div>
 
         <div className="flex items-center space-x-3">
@@ -89,14 +89,14 @@ export function TeamView() {
             className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
           >
             <Plus className="h-4 w-4 mr-2" />
-            Create Team
+            Buat Tim
           </button>
           <button
             onClick={() => setIsInviteModalOpen(true)}
             className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             <Mail className="h-4 w-4 mr-2" />
-            Invite Member
+            Undang Anggota
           </button>
         </div>
       </div>
@@ -109,11 +109,11 @@ export function TeamView() {
             animate={{ opacity: 1, x: 0 }}
             className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6"
           >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Your Teams</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tim Anda</h3>
 
             <div className="space-y-3">
               {teams.length === 0 && (
-                <div className="text-gray-500 text-sm">No teams found</div>
+                <div className="text-gray-500 text-sm">Tidak ada tim</div>
               )}
               {teams.map((team) => (
                 <button
@@ -129,7 +129,7 @@ export function TeamView() {
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: team.color }} />
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-gray-900 dark:text-white truncate">{team.name}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{team.members?.length || 0} members</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{team.members?.length || 0} anggota</p>
                     </div>
                   </div>
                 </button>
@@ -163,17 +163,17 @@ export function TeamView() {
                       </div>
                     </>
                   ) : (
-                    <div className="text-gray-400">No team selected</div>
+                    <div className="text-gray-400">Belum ada tim yang dipilih</div>
                   )}
                 </div>
 
                 <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center space-x-1">
                     <Users className="h-4 w-4" />
-                    <span>{selectedTeam?.members?.length || 0} members</span>
+                    <span>{selectedTeam?.members?.length || 0} anggota</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <span>{selectedTeam?.tasksCount || 0} tasks</span>
+                    <span>{selectedTeam?.tasksCount || 0} tugas</span>
                   </div>
                 </div>
               </div>
@@ -186,7 +186,7 @@ export function TeamView() {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <input
                     type="text"
-                    placeholder="Search members..."
+                    placeholder="Cari anggota..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -198,7 +198,7 @@ export function TeamView() {
                   className="ml-4 inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   <Plus className="h-4 w-4 mr-2" />
-                  Add Member
+                  Tambah Anggota
                 </button>
               </div>
             </div>
